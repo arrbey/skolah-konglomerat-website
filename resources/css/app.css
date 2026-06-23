@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --font-display: 'Cormorant Garamond', Georgia, serif;
+        --font-body: 'DM Sans', system-ui, sans-serif;
+        --font-mono: 'DM Mono', monospace;
+    }
+
+    body {
+        font-family: var(--font-body);
+    }
+
+    .font-display {
+        font-family: var(--font-display);
+    }
+
+    .font-mono {
+        font-family: var(--font-mono);
+    }
+
+    @keyframes fade-up {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-luxury-atmosphere {
+        background:
+            radial-gradient(circle at 50% 18%, rgba(201, 168, 76, .16), transparent 28%),
+            radial-gradient(circle at 78% 32%, rgba(27, 111, 232, .24), transparent 34%),
+            radial-gradient(circle at 18% 74%, rgba(201, 168, 76, .08), transparent 30%),
+            linear-gradient(180deg, rgba(5, 13, 26, .12), #050D1A 92%);
+    }
+
+    .hero-blueprint {
+        background-image:
+            linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px),
+            linear-gradient(115deg, transparent 0 46%, rgba(201, 168, 76, .16) 46.15% 46.35%, transparent 46.5% 100%);
+        background-size: 72px 72px, 72px 72px, 100% 100%;
+        mask-image: radial-gradient(ellipse 78% 58% at 50% 35%, #000 0%, transparent 78%);
+        opacity: .78;
+    }
+
+    .hero-blueprint::before,
+    .hero-blueprint::after {
+        content: '';
+        position: absolute;
+        border: 1px solid rgba(201, 168, 76, .16);
+        border-radius: 9999px;
+        inset: 14% auto auto 50%;
+        width: min(78vw, 760px);
+        aspect-ratio: 1;
+        transform: translateX(-50%);
+    }
+
+    .hero-blueprint::after {
+        width: min(58vw, 560px);
+        border-color: rgba(255, 255, 255, .08);
+        transform: translateX(-50%) rotate(18deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            scroll-behavior: auto !important;
+            transition-duration: .01ms !important;
+        }
+    }
+}
